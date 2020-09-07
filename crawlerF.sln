@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "crawlerF", "crawlerF\crawlerF.fsproj", "{DD649F41-EA34-463B-A317-A9C9CAE7CBA0}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "crawlerF", "crawlerF\crawlerF.fsproj", "{DD649F41-EA34-463B-A317-A9C9CAE7CBA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69F4BCA4-6A4E-4128-837A-4310F9F86EFC}"
+	ProjectSection(SolutionItems) = preProject
+		test.csv = test.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
