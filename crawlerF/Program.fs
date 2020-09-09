@@ -12,18 +12,31 @@ open FSharp.Data
 let main (args: string[]) =
     printfn "Arguments passes in: %A" args
     // F# searches the following directory at runtime : C:\Users\userName\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\test.csv'.
-    // It is therefore necessary to provide the top level of the repo for the file read by prepending ../../../../ to the file name
+    // It is therefore necessary to provide the top level of the repo for the file read by prepending ../../../../ to the file name    
+    let nestingLevel = 2
     let filePath = "../../../../" + args.[1]    
-    let htmlPage = HtmlDocument.Load("https://scrapethissite.com/")
-    printfn "%s" (string htmlPage)
+    let baseUrl = "https://scrapethissite.com"
+    let htmlPage = HtmlDocument.Load(baseUrl)
 
-    let links = 
-        htmlPage.CssSelect("a")
+    let rec crawlPage (page : String, nestingLevel : int) =    
+        HtmlDocument.Load(page)
+        |> fun m -> m.CssSelect("a")
         |> List.map(fun a -> a.AttributeValue("href"))
         |> Seq.distinctBy id
-        |> Seq.toList
-   
-    printfn "Links: %A" links
+        |> Seq.map (fun x -> baseUrl + x)
+        |> Seq.map (fun x -> 
+            match nestingLevel with
+            | _ when (nestingLevel > 0) -> printfn "Test1 %s" x //crawlPage(x, (nestingLevel - 1))
+            | _ when (nestingLevel <= 0) -> printfn "Test2 %s" x  //ignore
+            | _ -> printfn "Test3 %s" x  //ignore // To silence warnings.
+        )
+    
+    //printfn "Here: %A" (Array.append urls1, crawlPage baseUrl)
+
+    let saw = crawlPage(baseUrl, nestingLevel)
+    printfn "Final Print %A" saw
+
+    // Create navigable links out of the retrieved attribute strings
    
     let urlList (filePath:string) = seq {
         use sr = new StreamReader (filePath)
