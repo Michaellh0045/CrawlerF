@@ -12,24 +12,36 @@ let main (args: string[]) =
     printfn "Arguments passes in: %A" args
     // F# searches the following directory at runtime : C:\Users\userName\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\test.csv'.
     // It is therefore necessary to provide the top level of the repo for the file read by prepending ../../../../ to the file name    
+    let topDir = "../../../../"
     let nestingLevel = 2
     let filePath = "../../../../" + args.[1]    
     let baseUrl1 = "https://scrapethissite.com"
     let baseUrl2 = "https://cdc.gov"
     let https = "https://"
-    //let baseU = "scrapethissite.com"
-    //let htmlPage = HtmlDocument.Load(baseUrl)
+    let illegalChars = "<>:\"/\\|?*=."
 
     let strPrint (str : string) : string =
         printfn "After Distinct: %s" str
         str
+
+    let stripChars = 
+        String.map (fun s -> if Seq.exists((=)s) illegalChars then '_' else s) 
+    
+    
+    let savePage (url : string, page : HtmlDocument) =
+        let fileName = stripChars url
+        printfn "File Created: %s" fileName
+        use streamWriter = new StreamWriter("../../../Saved Pages/" + fileName + ".txt")
+        streamWriter.WriteLine(page.ToString())
+        page   
 
     let rec crawlPage (page : String, nestingLevel : int) : list<string> =    
         System.Threading.Thread.Sleep 1200
         printfn "Crawling URL: %s" page
         printfn "Nesting Level: %i \n" nestingLevel
         try 
-            HtmlDocument.Load(page)
+            let pageHtml = HtmlDocument.Load(page)
+            savePage(page, pageHtml)
             |> fun m -> m.CssSelect("a")
             |> List.map(fun a -> a.AttributeValue("href"))
             |> List.distinctBy id
@@ -47,7 +59,6 @@ let main (args: string[]) =
 
     let saw = crawlPage(baseUrl1, nestingLevel)
     saw |> List.iter (fun x -> printfn "Look Here -> %s" x)
-    //printfn "Final Print %A" saw
 
     // Create navigable links out of the retrieved attribute strings
    
