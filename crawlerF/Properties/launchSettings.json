@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "crawlerF": {
+      "commandName": "Project",
+      "commandLineArgs": "2 test.csv"
+    }
+  }
+}

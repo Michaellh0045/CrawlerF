@@ -1,0 +1,10 @@
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\crawlerF.deps.json
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\crawlerF.runtimeconfig.json
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\crawlerF.runtimeconfig.dev.json
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\crawlerF.dll
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\bin\Debug\netcoreapp2.1\crawlerF.pdb
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\obj\Debug\netcoreapp2.1\crawlerF.fsprojAssemblyReference.cache
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\obj\Debug\netcoreapp2.1\crawlerF.AssemblyInfoInputs.cache
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\obj\Debug\netcoreapp2.1\crawlerF.AssemblyInfo.fs
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\obj\Debug\netcoreapp2.1\crawlerF.dll
+C:\Users\Leviathan\source\repos\crawlerF\crawlerF\obj\Debug\netcoreapp2.1\crawlerF.pdb

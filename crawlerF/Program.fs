@@ -21,7 +21,7 @@ let main (args: string[]) =
     let savePage (url : string, page : HtmlDocument) =
         let fileName = stripChars url
         printfn "File Created: %s" fileName
-        use streamWriter = new StreamWriter("../../../Saved Pages/" + fileName + ".txt")
+        use streamWriter = new StreamWriter("../../../SavedPages/" + fileName + ".txt")
         streamWriter.WriteLine(page.ToString())
         page   
 
